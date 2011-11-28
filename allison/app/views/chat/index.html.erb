@@ -1,0 +1,137 @@
+<html>
+  <head>
+    <title>Chat Client</title>
+    <style type="text/css" media="screen">
+    body {
+      padding-top: 40px;
+    }
+    h1 {
+      margin: 1em 0;
+    }  
+    #mesg {
+      overflow-x: hidden;
+      height: 460px;
+      border-style:solid;
+      border-width:1px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      margin-right: 5px;
+      border-color: #ccc;
+    }
+    #textbox {
+    }
+    .container{
+      margin-left:10px;
+      margin-right:10px;
+      width: 99%;  
+    }
+    #next {
+      margin-top: 5px;
+    }
+    #commit {
+      margin-top: 5px;
+    }
+    li{
+      color: #000;
+      margin-left: 5px;
+    }
+    #headerbox-r {
+      float: right;
+      text-align: right;
+    }
+    #headerbox-l {
+      float: left;
+      text-align: left;
+    }
+    </style>
+  </head>
+  <body>
+  <script src="http://localhost:8080/application.js" type="text/javascript" charset="utf-8"></script>
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <a class="brand" href="#">Allison</a>
+          <ul class="nav">
+            <li class="active"><a href="#">Chat</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+          
+          <form action="" class="pull-right">
+            <input class="input-small" type="text" placeholder="Username">
+            <input class="input-small" type="password" placeholder="Password">
+            <button class="btn" type="submit">Sign in</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  <div class="container">	
+    <div id="header">
+      <div id="headerbox-r">
+        <h3>There are <%= @count %> users online.</h3>
+      </div>
+      <div id="headerbox-l">
+        <h3>You are <%= @role1 %>. Your friend is <%= @role2 %></h3>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div id="mesg"></div>
+    <script type="text/javascript" charset="utf-8">
+    var jug = new Juggernaut();
+    //$("#header").append("<h3>There are <%= @count %> users online.t");
+    //very ugly hack to bring together the users and their roles
+    //users_and_roles gives both roles
+    //$("#header").append(" You are <%= @role1 %>. Your friend is <%= @role2 %></h3>");
+    var user = '<%= @user %>';
+     
+    jug.subscribe("/chats/<%= @channel %>", function(data){
+      var tmp = data.split(':');
+      var msg = tmp[1];
+      var sender = tmp[0];
+      if (msg == ' off') {
+        msg = "Your friend has logged off.";
+        data = 'System: '+ msg;
+        var li = $("<li/>");
+        li.text(data);
+
+        $("#mesg").append("<p>System: Your friend has logged off. <a href='/chat/'>Start a New Role.</a></p>");
+        $("#mesg").append("<p><a href='#' id='download' >Download this Conversation</a> | <a href='#' onClick='SelectAll(\"header\");'>Select for Copy Pasting</a></p>");
+        $("#mesg").scrollTop($("#mesg")[0].scrollHeight);
+      } else if (msg == ' ') {
+        $('#msg_body').attr('placeholder', 'Please enter something...'); 
+      } else {
+        if (sender == "<%= @user %>"){
+          sender = "<font color='#ff7711'>You</font>";
+          data = sender + ': ' + msg;
+        } else {
+          sender = "<font color='1155ff'>Friend</font>";
+          data = sender + ': ' + msg;
+        }
+        var li = $("<li/>");
+        li.text('<li>'+data+'</li>');
+        txt = '<h4><li>'+data+'</li></h4>';
+        $("#mesg").append(txt);
+        $("#mesg").scrollTop($("#mesg")[0].scrollHeight);
+      }
+    }); 
+
+  </script>
+  <script type="text/javascript">
+  function SelectAll(id) {
+    document.getElementById(id).focus();
+    document.getElementById(id).select;
+  }
+  </script>
+  <div id="textbox">
+  <% form_tag('/chat/send', :id => 'chat_window', :remote => true) do %>
+    <input class="xxlarge" id="msg_body" name="msg_body" style='width:700px'></input>
+    <%= hidden_field_tag 'sender', @user%>
+    <%= hidden_field_tag 'channel', @channel%>
+    <button class="btn" name='commit' type="submit" >Send Message</button>
+    <button class="btn" name='next' value='Next Role' onClick="window.location.reload()" style='width:9em'>New Role</button>
+  <% end %>
+  </div>
+  </div>
+  </body>
+</html>

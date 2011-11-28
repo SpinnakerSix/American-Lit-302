@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  role1: MyString
+  role2: MyString
+
+two:
+  role1: MyString
+  role2: MyString

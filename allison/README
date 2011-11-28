@@ -1,0 +1,51 @@
+Private Chat Room in ruby on rails 3.0
+---------------------------------------
+
+This sample will let you develop a private chatRoom using juggernaut. It push chats in realtime based on publish/subscribe model.
+
+
+Resources:
+
+TL;DR:
+Have these
+Nodejs - http://nodejs.org/
+Redis - http://code.google.com/p/redis/
+Juggernaut - https://github.com/maccman/juggernaut/
+JQuery - http://mirror.ozdiy.com/assets/b8/2f96a12bc919b37e09d303b86ea1b9_1251811910.html
+
+run redis-server
+run sudo node server.js in your juggernaut folder
+run rails s
+run ./juggernaut_listener in rails's script folder
+
+make sure you have a mysql database then you are good to go
+
+Steps::
+
+1. Install node-v0.2.5
+	Download available at: http://nodejs.org/dist/node-v0.2.5.tar.gz
+	
+2  Install redis 2.0.4
+	Download available at: http://code.google.com/p/redis/downloads/detail?name=redis-2.0.4.tar.gz&can=2&q=
+ 
+3. Run Redis server
+	redis-server
+	
+3  Install juggernaut
+	git clone git://github.com/maccman/juggernaut.git --recursive
+	cd juggernaut
+	sudo node server.js
+	
+   Till this point, you would have all things in place except that juggernaut would still not be able to publish chats onto channels. This feature will get enabled after Step#5
+   
+4. Now you are ready to implement private chat app in RoR3. To get a sample chat application:
+	git clone git://github.com/prabgupt/chatclient.git --recursive
+	cd chatclient
+	
+5. To enable publishing by Juggernaut, run: bundle install
+
+6. run rails server: rails server
+
+open URLS: localhost:3000/chat/ for a channel
+	   
+

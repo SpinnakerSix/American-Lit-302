@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Agentchat</title>
+  <%= stylesheet_link_tag :all %>
+
+  <%= javascript_include_tag 'jquery', 'application' %>
+  <%= javascript_include_tag 'downloadify.min.js' %>
+  <%= javascript_include_tag 'swfobject.js' %>
+  <%= javascript_include_tag 'script.js' %>
+  
+  <%= csrf_meta_tag %>
+  <%= csrf_meta_tag %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+
+<%= yield %>
+
+</body>
+</html>
