@@ -22,7 +22,12 @@ class ChatController < ApplicationController
 	   exit_channel(@current_channel_id, @user_id)
 	   return @channel, @role1, @role2 = join_channel(@user_id)
 	end
-
+        
+        def download
+          @user = params[:sender]
+          @channel = params[:channel]
+          send_file "app/views/logs/#{@channel}.txt", :type=>"application/text" 
+        end
 	def send_message
 	  @messg = params[:msg_body]
   	  @sender = params[:sender]
@@ -34,7 +39,7 @@ class ChatController < ApplicationController
  	  Juggernaut.publish(select_channel(@channel), parse_chat_message(params[:msg_body], params[:sender]))	
 
           f = File.open("app/views/logs/#{@channel}.txt",'a')
-          f.write("#{@sender}: #{@messg} \n")
+          f.write("<#{@sender}>: #{@messg} \n")
           f.close
 
 	  respond_to do |format|

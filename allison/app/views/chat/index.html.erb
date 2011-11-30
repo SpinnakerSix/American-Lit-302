@@ -96,8 +96,10 @@
         li.text(data);
 
         $("#mesg").append("<p>System: Your friend has logged off. <a href='/chat/'>Start a New Role.</a></p>");
-        $("#mesg").append("<p><a href='#' id='download' >Download this Conversation</a> | <a href='#' onClick='SelectAll(\"header\");'>Select for Copy Pasting</a></p>");
+        $("#mesg").append("<p><a href='javascript: submitDownloadForm()'>Download this Conversation</a>");
         $("#mesg").scrollTop($("#mesg")[0].scrollHeight);
+        
+        document.getElementById("send_msg").disabled = true;
       } else if (msg == ' ') {
         $('#msg_body').attr('placeholder', 'Please enter something...'); 
       } else {
@@ -122,15 +124,24 @@
     document.getElementById(id).focus();
     document.getElementById(id).select;
   }
+  function submitDownloadForm() {
+    document.forms['download_window'].submit();
+  }
   </script>
   <div id="textbox">
   <% form_tag('/chat/send', :id => 'chat_window', :remote => true) do %>
     <input class="xxlarge" id="msg_body" name="msg_body" style='width:700px'></input>
     <%= hidden_field_tag 'sender', @user%>
     <%= hidden_field_tag 'channel', @channel%>
-    <button class="btn" name='commit' type="submit" >Send Message</button>
+    <button class="btn" name='commit' id="send_msg" type="submit" >Send Message</button>
     <button class="btn" name='next' value='Next Role' onClick="window.location.reload()" style='width:9em'>New Role</button>
   <% end %>
+
+<% form_tag('/chat/download', :id => 'download_window', :remote => true, :display=>'none') do %>
+    <%= hidden_field_tag 'sender', @user%>
+    <%= hidden_field_tag 'channel', @channel%>
+<% end %>
+
   </div>
   </div>
   </body>

@@ -1,5 +1,6 @@
 Agentchat::Application.routes.draw do
   match "/chat/send", :controller => "chat", :action => "send_message"
+  match "/chat/download", :controller => "chat", :action => "download"
   match "/chat/channel1", :controller => "chat", :action => "channel1"
   match "/chat/channel2", :controller => "chat", :action => "channel2"
   match "/chat/channel3", :controller => "chat", :action => "channel3"
