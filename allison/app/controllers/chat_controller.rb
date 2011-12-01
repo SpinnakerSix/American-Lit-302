@@ -11,7 +11,12 @@ class ChatController < ApplicationController
           # get ip
           @ip = request.remote_ip
           UserRecord.create(:user_id => @user, :ip=>@ip)
-	  @channel, @role1, @role2, @location1, @location2 = join_channel(@user)
+	  @channel, @role1, @role2, @location1, @location2, @joining = join_channel(@user)
+
+	  if (@joining)
+            @msg = 'Joining'
+ 	    Juggernaut.publish(select_channel(@channel_id), parse_chat_message(@msg, 'System'))	
+	  end
           if (@location1 != nil and @location2 != nil ) 
             @city2 = @location2.city
   	    @state2 = @location2.state         
@@ -114,7 +119,9 @@ class ChatController < ApplicationController
             @role2 = Role.find_by_role1(@role1).role2
 	    @loc1 = find_location_by_user_id(@user_id)
 
-	    return [@channel.id, @role1, @role2, @loc1, @loc2]
+ 	    #@msg = 'Matching you with a friend. Please wait...'
+	    #Juggernaut.publish(select_channel(@channel.id), parse_chat_message(@msg, 'System'))	
+	    return [@channel.id, @role1, @role2, @loc1, @loc2, false]
 
 	  else
 	    puts "There are free channels!"
@@ -132,10 +139,9 @@ class ChatController < ApplicationController
 
 	    @loc1 = find_location_by_user_id(@user1)
 	    @loc2 = find_location_by_user_id(@user2)
-	    @msg = "Joining Channel #{@channel_id}. Your friend is here. Say hi!"
- 	    Juggernaut.publish(select_channel(@channel_id), parse_chat_message(@msg, 'System'))	
+	    #@msg = "Joining Channel #{@channel_id}. Your friend is here. Say hi!"
 	    puts "user #{@user_id} is joining channel #{@channel_id}"
-	    return [@channel.name, @role1, @role2, @loc1, @loc2]
+	    return [@channel.name, @role1, @role2, @loc1, @loc2, true]
 	  end
 	end
 

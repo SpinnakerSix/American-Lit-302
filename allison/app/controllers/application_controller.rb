@@ -8,5 +8,13 @@ class ApplicationController < ActionController::Base
         return "#{user} says: #{msg}"
         end
 
+	# customize file for download
+	# takes in a file and a user name
+	# creates a new file with the original file name and the username as the name
+	def customize_file(user_id, filename)
+	  handle = File.open(filename, 'r')
+	  content = handle.read
+	  
+	end
   protect_from_forgery
 end
