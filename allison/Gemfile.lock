@@ -40,6 +40,7 @@ GEM
     builder (2.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    geokit (1.6.0)
     i18n (0.6.0)
     json (1.6.1)
     mail (2.2.19)
@@ -81,6 +82,7 @@ PLATFORMS
 
 DEPENDENCIES
   SystemTimer
+  geokit
   json
   juggernaut!
   mysql2 (< 0.3)

@@ -11,8 +11,13 @@ class ChatController < ApplicationController
           # get ip
           @ip = request.remote_ip
           UserRecord.create(:user_id => @user, :ip=>@ip)
-
-	  @channel, @role1, @role2 = join_channel(@user)
+	  @channel, @role1, @role2, @location1, @location2 = join_channel(@user)
+          if (@location1 != nil and @location2 != nil ) 
+            @city2 = @location2.city
+  	    @state2 = @location2.state         
+            @city1 = @location1.city
+	    @state1 = @location1.state         
+          end
 	end
 	
 	def next
@@ -20,7 +25,9 @@ class ChatController < ApplicationController
 	   @user_id = params[:sender]
            @user = @user_id
 	   exit_channel(@current_channel_id, @user_id)
-	   return @channel, @role1, @role2 = join_channel(@user_id)
+	   @channel, @role1, @role2, @location2 = join_channel(@user_id)
+           @city = @location2.city
+	   @state = @location2.state         
 	end
         
         def download
@@ -105,7 +112,10 @@ class ChatController < ApplicationController
 	    @channel, @role1 = make_free_channel(@user_id)
 
             @role2 = Role.find_by_role1(@role1).role2
-	    return [@channel.id, @role1, @role2]
+	    @loc1 = find_location_by_user_id(@user_id)
+
+	    return [@channel.id, @role1, @role2, @loc1, @loc2]
+
 	  else
 	    puts "There are free channels!"
 
@@ -120,8 +130,12 @@ class ChatController < ApplicationController
             Record.create(:channel=>@channel_id, :user1=>@user1, :user2=>@user2, :role1=>@role1, :role2=>@role2)
             File.new("app/views/logs/#{@channel_id}.txt", "w")
 
+	    @loc1 = find_location_by_user_id(@user1)
+	    @loc2 = find_location_by_user_id(@user2)
+	    @msg = "Joining Channel #{@channel_id}. Your friend is here. Say hi!"
+ 	    Juggernaut.publish(select_channel(@channel_id), parse_chat_message(@msg, 'System'))	
 	    puts "user #{@user_id} is joining channel #{@channel_id}"
-	    return [@channel.name, @role1, @role2]
+	    return [@channel.name, @role1, @role2, @loc1, @loc2]
 	  end
 	end
 
@@ -150,4 +164,10 @@ class ChatController < ApplicationController
           @role2 = Role.find_by_role1(@role1).role2
           return [@role1, @role2]
         end
+
+	def find_location_by_user_id(user_id)
+	    @user_id = user_id
+	    @ip = UserRecord.find_by_user_id(@user_id).ip
+	    @location = Geokit::Geocoders::MultiGeocoder.geocode(@ip)
+	end
 end
