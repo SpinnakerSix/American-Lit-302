@@ -1,0 +1,13 @@
+.bundle
+db/*.sqlite3
+log/*.log
+allison/app/views/logs/*
+allison/app/views/logs/tmp/*
+tmp/
+public/assets
+config/database.yml
+.rvmrc
+.idea/
+*.swp
+*/*.swp
+.idea/
