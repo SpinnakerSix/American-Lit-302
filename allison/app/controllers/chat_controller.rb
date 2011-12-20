@@ -146,7 +146,9 @@ class ChatController < ApplicationController
 	  end
 	end
 
+	# database cleanups during a session exit event
 	def exit_channel(channel_id, user_id)
+	  # clean up inuse channels
 	  if InuseChannel.find_by_name(channel_id) != nil
 	    inuse_channel = InuseChannel.find_by_name(channel_id)
 	    user1 = inuse_channel.user1

@@ -108,17 +108,10 @@
       //alert(data);
       //alert(msg);
       if (msg == ' off') {
-        //document.getElementById("send_msg").disabled = true;
-        msg = "Your friend has logged off.";
-        data = 'System: '+ msg;
-        var li = $("<li/>");
-	li.text(data);
-
-        $("#mesg").append("<p></p>");
-        $("#mesg").append("<h3>System: Your friend has logged off. <a href='/chat/'>Start a New Role.</a></h3>");
-        $("#mesg").append("<h3><a href='javascript: submitDownloadForm()'>Download this Conversation</a></h3>");
-        $("#mesg").scrollTop($("#mesg")[0].scrollHeight);
-	// the below code can solve the joining issue or mess it up.
+        msg = "Your friend ended the session.";
+	showDownloadPrompt(msg);
+	$("#end_session").hide();
+	$("#new_role").show();
       } else if (msg == ' Joining') {
 	//alert(msg);
         //document.getElementById("send_msg").disabled = false;
@@ -155,6 +148,25 @@
   function submitDownloadForm() {
     document.forms['download_window'].submit();
   }
+
+  function quitChannel(channel) {
+    jug.unsubscribe("/chats/" + channel);
+    showDownloadPrompt("You ended the session.");
+    $("#end_session").hide();
+    $("#new_role").show();
+  }
+
+  function showDownloadPrompt(msg) {
+        document.getElementById("send_msg").disabled = true;
+        var data = 'System: '+ msg;
+        var li = $("<li/>");
+	li.text(data);
+
+        $("#mesg").append("<p></p>");
+        $("#mesg").append("<h3>" + msg +" <a href='/chat/'>Start a New Role.</a></h3>");
+        $("#mesg").append("<h3><a href='javascript: submitDownloadForm()'>Download this Conversation</a></h3>");
+  }
+
   </script>
   <div id="textbox">
   <% form_tag('/chat/send', :id => 'chat_window', :remote => true) do %>
@@ -162,7 +174,8 @@
     <%= hidden_field_tag 'sender', @user%>
     <%= hidden_field_tag 'channel', @channel%>
     <button class="btn" name='commit' id="send_msg" type="submit" >Send Message</button>
-    <button class="btn" name='next' value='Next Role' onClick="window.location.reload()" style='width:9em'>New Role</button>
+    <button class="btn" name='next' value='Next Role' id="new_role" onClick="window.location.reload()" style='width:9em; display:none;'>New Role</button>
+    <button class="btn" name='next' value='Next Role' id="end_session" onClick="quitChannel(<%= @channel %>)" style='width:9em'>End Session</button>
   <% end %>
 
 <% form_tag('/chat/download', :id => 'download_window', :remote => true, :display=>'none') do %>
