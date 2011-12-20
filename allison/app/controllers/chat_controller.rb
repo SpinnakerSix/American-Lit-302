@@ -14,6 +14,7 @@ class ChatController < ApplicationController
 	  @channel, @role1, @role2, @location1, @location2, @joining = join_channel(@user)
 
 	  if (@joining)
+	    puts "Joining Joining!"
             @msg = 'Joining'
  	    Juggernaut.publish(select_channel(@channel_id), parse_chat_message(@msg, 'System'))	
 	  end
