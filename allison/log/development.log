@@ -47225,3 +47225,603 @@ Completed 200 OK in 221ms (Views: 10.9ms | ActiveRecord: 17.7ms)
   [1m[36mFreeChannel Load (0.3ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 99) LIMIT 1[0m
   [1m[35mInuseChannel Load (0.6ms)[0m  SELECT `inuse_channels`.* FROM `inuse_channels` WHERE (`inuse_channels`.`name` = 59) LIMIT 1
   [1m[36mFreeChannel Load (35.4ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 59) LIMIT 1[0m
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+
+
+Started GET "/" for 127.0.0.1 at Mon Dec 19 16:05:14 -0800 2011
+
+ActionController::RoutingError (No route matches "/"):
+  
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/routing_error.erb within rescues/layout (0.6ms)
+
+
+Started GET "/chat/" for 127.0.0.1 at Mon Dec 19 16:05:18 -0800 2011
+  Processing by ChatController#index as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (2.1ms)[0m  [1mdescribe `users`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `users` (`email`, `current_sign_in_ip`, `last_sign_in_at`, `current_sign_in_at`, `reset_password_sent_at`, `sign_in_count`, `updated_at`, `reset_password_token`, `admin`, `created_at`, `encrypted_password`, `remember_created_at`, `last_sign_in_ip`) VALUES ('', NULL, NULL, NULL, NULL, 0, '2011-12-20 00:05:18', NULL, NULL, '2011-12-20 00:05:18', '', NULL, NULL)
+  [1m[36mSQL (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users`
+Completed   in 48ms
+
+Mysql2::Error (Table 'tmp_development.user_records' doesn't exist):
+  app/controllers/chat_controller.rb:13:in `index'
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.2ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (2.8ms)[0m  CREATE TABLE `free_channels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user1` int(11), `role1` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.0ms)[0m  CREATE TABLE `inuse_channels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `user1` int(11), `user2` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.9ms)[0m  CREATE TABLE `records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `channel` int(11), `user1` varchar(255), `user2` varchar(255), `role1` varchar(255), `role2` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.8ms)[0m  CREATE TABLE `role_stores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role1` varchar(255), `role2` varchar(255), `user1` varchar(255), `user2` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.8ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role1` varchar(255), `role2` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.8ms)[0m  CREATE TABLE `user_levels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ip` varchar(255), `user_level` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.7ms)[0m  CREATE TABLE `user_records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ip` varchar(255), `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.7ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.3ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (14.1ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20111128215020')[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111124082058')
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20111124081116')[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111127212517')
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20111124082115')[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111127212500')
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20111128063912')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111128214922')
+  [1m[36mSQL (0.4ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateUsers (20111124081116)
+Migrating to CreateInuseChannels (20111124082058)
+Migrating to CreateFreeChannels (20111124082115)
+Migrating to CreateRoleStores (20111127212500)
+Migrating to CreateRoles (20111127212517)
+Migrating to CreateRecords (20111128063912)
+Migrating to CreateUserRecords (20111128214922)
+Migrating to CreateUserLevels (20111128215020)
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.0ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `free_channels`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `free_channels`
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `inuse_channels`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `inuse_channels`
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `records`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `records`
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `role_stores`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `role_stores`
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `roles`
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `user_levels`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `user_levels`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `user_records`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `user_records`
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `users`
+
+
+Started GET "/chat/" for 127.0.0.1 at Mon Dec 19 16:05:57 -0800 2011
+  Processing by ChatController#index as HTML
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  describe `users`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`) VALUES ('2011-12-20 00:05:57', '2011-12-20 00:05:57')[0m
+  [1m[35mSQL (1.7ms)[0m  COMMIT
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.4ms)[0m  describe `user_records`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `user_records` (`user_id`, `ip`, `updated_at`, `created_at`) VALUES (1, '127.0.0.1', '2011-12-20 00:05:57', '2011-12-20 00:05:57')[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mFreeChannel Load (0.2ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels`[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.* FROM `roles`
+Completed   in 74ms
+
+NoMethodError (undefined method `role1' for nil:NilClass):
+  app/controllers/chat_controller.rb:85:in `make_free_channel'
+  app/controllers/chat_controller.rb:117:in `join_channel'
+  app/controllers/chat_controller.rb:14:in `index'
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.8ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (31.5ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (34.7ms)
+
+
+Started GET "/chat/" for 127.0.0.1 at Mon Dec 19 16:06:00 -0800 2011
+  Processing by ChatController#index as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  describe `users`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`) VALUES ('2011-12-20 00:06:00', '2011-12-20 00:06:00')[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  describe `user_records`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `user_records` (`created_at`, `updated_at`, `ip`, `user_id`) VALUES ('2011-12-20 00:06:00', '2011-12-20 00:06:00', '127.0.0.1', 2)[0m
+  [1m[35mSQL (1.0ms)[0m  COMMIT
+  [1m[36mFreeChannel Load (0.1ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels`[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles`
+Completed   in 22ms
+
+NoMethodError (undefined method `role1' for nil:NilClass):
+  app/controllers/chat_controller.rb:85:in `make_free_channel'
+  app/controllers/chat_controller.rb:117:in `join_channel'
+  app/controllers/chat_controller.rb:14:in `index'
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (5.9ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.9ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (1.7ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+Migrating to CreateUsers (20111124081116)
+  [1m[35mSQL (1.3ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20111124081116')[0m
+Migrating to CreateInuseChannels (20111124082058)
+  [1m[35mSQL (1.3ms)[0m  CREATE TABLE `inuse_channels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `user1` int(11), `user2` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20111124082058')[0m
+Migrating to CreateFreeChannels (20111124082115)
+  [1m[35mSQL (1.3ms)[0m  CREATE TABLE `free_channels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user1` int(11), `role1` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20111124082115')[0m
+Migrating to CreateRoleStores (20111127212500)
+  [1m[35mSQL (1.2ms)[0m  CREATE TABLE `role_stores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role1` varchar(255), `role2` varchar(255), `user1` varchar(255), `user2` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20111127212500')[0m
+Migrating to CreateRoles (20111127212517)
+  [1m[35mSQL (0.9ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role1` varchar(255), `role2` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20111127212517')[0m
+Migrating to CreateRecords (20111128063912)
+  [1m[35mSQL (1.2ms)[0m  CREATE TABLE `records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `channel` int(11), `user1` varchar(255), `user2` varchar(255), `role1` varchar(255), `role2` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (10.4ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20111128063912')[0m
+Migrating to CreateUserRecords (20111128214922)
+  [1m[35mSQL (2.1ms)[0m  CREATE TABLE `user_records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ip` varchar(255), `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20111128214922')[0m
+Migrating to CreateUserLevels (20111128215020)
+  [1m[35mSQL (1.1ms)[0m  CREATE TABLE `user_levels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ip` varchar(255), `user_level` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20111128215020')[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `free_channels`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `free_channels`
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `inuse_channels`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `inuse_channels`
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `records`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `records`
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `role_stores`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `role_stores`
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `roles`
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `user_levels`[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW KEYS FROM `user_levels`
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `user_records`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `user_records`
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `users`[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW KEYS FROM `users`
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (2.7ms)[0m  CREATE TABLE `free_channels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user1` int(11), `role1` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.8ms)[0m  CREATE TABLE `inuse_channels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `user1` int(11), `user2` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.8ms)[0m  CREATE TABLE `records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `channel` int(11), `user1` varchar(255), `user2` varchar(255), `role1` varchar(255), `role2` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.9ms)[0m  CREATE TABLE `role_stores` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role1` varchar(255), `role2` varchar(255), `user1` varchar(255), `user2` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.8ms)[0m  CREATE TABLE `roles` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `role1` varchar(255), `role2` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.7ms)[0m  CREATE TABLE `user_levels` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ip` varchar(255), `user_level` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (1.1ms)[0m  CREATE TABLE `user_records` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `ip` varchar(255), `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.7ms)[0m  CREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB
+  [1m[36mSQL (0.1ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (2.0ms)[0m  CREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW KEYS FROM `schema_migrations`[0m
+  [1m[35mSQL (1.5ms)[0m  CREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.1ms)[0m  SELECT version FROM `schema_migrations`
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20111128215020')[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111124082058')
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20111124081116')[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111127212517')
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20111124082115')[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111127212500')
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO `schema_migrations` (version) VALUES ('20111128063912')[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO `schema_migrations` (version) VALUES ('20111128214922')
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.1ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.1ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations`[0m
+
+
+Started GET "/chat/" for 127.0.0.1 at Mon Dec 19 16:07:49 -0800 2011
+  Processing by ChatController#index as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  describe `users`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`) VALUES ('2011-12-20 00:07:49', '2011-12-20 00:07:49')[0m
+  [1m[35mSQL (1.2ms)[0m  COMMIT
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  describe `user_records`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `user_records` (`user_id`, `created_at`, `updated_at`, `ip`) VALUES (1, '2011-12-20 00:07:49', '2011-12-20 00:07:49', '127.0.0.1')[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mFreeChannel Load (0.2ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels`[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles`
+Completed   in 22ms
+
+NoMethodError (undefined method `role1' for nil:NilClass):
+  app/controllers/chat_controller.rb:85:in `make_free_channel'
+  app/controllers/chat_controller.rb:117:in `join_channel'
+  app/controllers/chat_controller.rb:14:in `index'
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (33.2ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (36.2ms)
+
+
+Started GET "/chat/" for 127.0.0.1 at Mon Dec 19 16:07:52 -0800 2011
+  Processing by ChatController#index as HTML
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  describe `users`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `users` (`updated_at`, `created_at`) VALUES ('2011-12-20 00:07:52', '2011-12-20 00:07:52')[0m
+  [1m[35mSQL (0.7ms)[0m  COMMIT
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  describe `user_records`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `user_records` (`ip`, `user_id`, `created_at`, `updated_at`) VALUES ('127.0.0.1', 2, '2011-12-20 00:07:52', '2011-12-20 00:07:52')[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mFreeChannel Load (0.1ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels`[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles`
+Completed   in 21ms
+
+NoMethodError (undefined method `role1' for nil:NilClass):
+  app/controllers/chat_controller.rb:85:in `make_free_channel'
+  app/controllers/chat_controller.rb:117:in `join_channel'
+  app/controllers/chat_controller.rb:14:in `index'
+
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_trace.erb (0.7ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (3.2ms)
+Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-3.0.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (6.0ms)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+  [1m[36mSQL (0.7ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mRole Load (0.2ms)[0m  SELECT `roles`.* FROM `roles`
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  SHOW TABLES
+  [1m[36mSQL (1.1ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mAREL (0.5ms)[0m  INSERT INTO `roles` (`created_at`, `updated_at`, `role1`, `role2`) VALUES ('2011-12-20 00:19:52', '2011-12-20 00:19:52', 'Obama', 'Batman')
+  [1m[36mSQL (2.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mRole Load (0.5ms)[0m  SELECT `roles`.* FROM `roles`
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `roles` (`updated_at`, `role2`, `role1`, `created_at`) VALUES ('2011-12-20 00:22:24', 'Batman', 'Obama', '2011-12-20 00:22:24')
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`updated_at`, `role2`, `role1`, `created_at`) VALUES ('2011-12-20 00:22:24', 'Richard Dawkins', 'Jesus', '2011-12-20 00:22:24')[0m
+  [1m[35mSQL (0.1ms)[0m  COMMIT
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT `roles`.* FROM `roles`[0m
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.4ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `roles` (`role2`, `updated_at`, `role1`, `created_at`) VALUES ('Batman\n', '2011-12-20 00:29:48', 'Obama', '2011-12-20 00:29:48')
+  [1m[36mSQL (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role2`, `updated_at`, `role1`, `created_at`) VALUES ('Jesus\n', '2011-12-20 00:29:48', 'Richard Dawkins', '2011-12-20 00:29:48')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `roles` (`role2`, `updated_at`, `role1`, `created_at`) VALUES ('Jesus\n', '2011-12-20 00:29:48', 'Superman', '2011-12-20 00:29:48')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mRole Load (0.5ms)[0m  SELECT `roles`.* FROM `roles`
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mAREL (0.2ms)[0m  INSERT INTO `roles` (`role2`, `role1`, `created_at`, `updated_at`) VALUES ('Batman', 'Obama', '2011-12-20 00:31:22', '2011-12-20 00:31:22')
+  [1m[36mSQL (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role2`, `role1`, `created_at`, `updated_at`) VALUES ('Jesus', 'Richard Dawkins', '2011-12-20 00:31:22', '2011-12-20 00:31:22')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `roles` (`role2`, `role1`, `created_at`, `updated_at`) VALUES ('Jesus', 'Superman', '2011-12-20 00:31:22', '2011-12-20 00:31:22')
+  [1m[36mSQL (0.1ms)[0m  [1mCOMMIT[0m
+  [1m[36mRole Load (0.5ms)[0m  [1mSELECT `roles`.* FROM `roles`[0m
+DEPRECATION WARNING: Use toplevel init.rb; rails/init.rb is deprecated: /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/config/environment.rb:4)
+DEPRECATION WARNING: reset_javascript_include_default is deprecated. Please manipulate config.action_view.javascript_expansions[:defaults] directly. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:14)
+DEPRECATION WARNING: RAILS_ENV is deprecated. Please use ::Rails.env. (called from /home/hj/Dropbox/ingidio/American-Lit-302/allison/vendor/plugins/jrails/rails/init.rb:16)
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.9ms)[0m  [1mdescribe `roles`[0m
+  [1m[35mAREL (0.4ms)[0m  INSERT INTO `roles` (`role1`, `created_at`, `updated_at`, `role2`) VALUES ('Obama', '2011-12-20 00:32:12', '2011-12-20 00:32:12', 'Batman')
+  [1m[36mSQL (3.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.2ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `roles` (`role1`, `created_at`, `updated_at`, `role2`) VALUES ('Richard Dawkins', '2011-12-20 00:32:12', '2011-12-20 00:32:12', 'Jesus')[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `roles` (`role1`, `created_at`, `updated_at`, `role2`) VALUES ('Superman', '2011-12-20 00:32:12', '2011-12-20 00:32:12', 'Jesus')
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mRole Load (0.6ms)[0m  SELECT `roles`.* FROM `roles`
+
+
+Started GET "/chat/" for 127.0.0.1 at Mon Dec 19 16:39:23 -0800 2011
+  Processing by ChatController#index as HTML
+  [1m[36mSQL (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  describe `users`
+  [1m[36mAREL (0.4ms)[0m  [1mINSERT INTO `users` (`updated_at`, `created_at`) VALUES ('2011-12-20 00:39:23', '2011-12-20 00:39:23')[0m
+  [1m[35mSQL (1.6ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  describe `user_records`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `user_records` (`updated_at`, `ip`, `created_at`, `user_id`) VALUES ('2011-12-20 00:39:23', '127.0.0.1', '2011-12-20 00:39:23', 3)[0m
+  [1m[35mSQL (0.4ms)[0m  COMMIT
+  [1m[36mFreeChannel Load (0.1ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels`[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles`
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `free_channels`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `free_channels` (`user1`, `role1`, `created_at`, `updated_at`) VALUES (3, 'Obama', '2011-12-20 00:39:23', '2011-12-20 00:39:23')
+  [1m[36mSQL (2.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mRole Load (0.2ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE (`roles`.`role1` = 'Obama') LIMIT 1[0m
+  [1m[35mUserRecord Load (0.2ms)[0m  SELECT `user_records`.* FROM `user_records` WHERE (`user_records`.`user_id` = 3) LIMIT 1
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_chat_index_html_erb___1693078433_69945301330320_0 at /home/hj/Dropbox/ingidio/American-Lit-302/allison/app/views/chat/index.html.erb:96)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_chat_index_html_erb___1693078433_69945301330320_0 at /home/hj/Dropbox/ingidio/American-Lit-302/allison/app/views/chat/index.html.erb:104)
+Rendered chat/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 816ms (Views: 55.3ms | ActiveRecord: 8.1ms)
+  [1m[36mSQL (0.6ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mInuseChannel Load (0.6ms)[0m  SELECT `inuse_channels`.* FROM `inuse_channels` WHERE (`inuse_channels`.`name` = 1) LIMIT 1
+  [1m[36mFreeChannel Load (0.2ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 1) LIMIT 1[0m
+
+
+Started POST "/chat/send" for 127.0.0.1 at Mon Dec 19 16:39:30 -0800 2011
+  Processing by ChatController#send_message as JS
+  Parameters: {"sender"=>"3", "msg_body"=>"dsf", "authenticity_token"=>"CSIQXDuXkGYxYwPdrPOjHII2fAUJ8adnEOrrCxZvtDk=", "utf8"=>"✓", "channel"=>"1"}
+Rendered chat/send_message.js.erb (0.3ms)
+Completed 200 OK in 53ms (Views: 49.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/chat/send" for 127.0.0.1 at Mon Dec 19 16:39:31 -0800 2011
+  Processing by ChatController#send_message as JS
+  Parameters: {"sender"=>"3", "msg_body"=>"sdf", "authenticity_token"=>"CSIQXDuXkGYxYwPdrPOjHII2fAUJ8adnEOrrCxZvtDk=", "utf8"=>"✓", "channel"=>"1"}
+Rendered chat/send_message.js.erb (0.2ms)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/chat/send" for 127.0.0.1 at Mon Dec 19 16:39:33 -0800 2011
+  Processing by ChatController#send_message as JS
+  Parameters: {"sender"=>"3", "msg_body"=>"sdf", "authenticity_token"=>"CSIQXDuXkGYxYwPdrPOjHII2fAUJ8adnEOrrCxZvtDk=", "utf8"=>"✓", "channel"=>"1"}
+Rendered chat/send_message.js.erb (0.2ms)
+Completed 200 OK in 41ms (Views: 39.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/chat/send" for 127.0.0.1 at Mon Dec 19 16:39:35 -0800 2011
+  Processing by ChatController#send_message as JS
+  Parameters: {"sender"=>"3", "msg_body"=>"dsf", "authenticity_token"=>"CSIQXDuXkGYxYwPdrPOjHII2fAUJ8adnEOrrCxZvtDk=", "utf8"=>"✓", "channel"=>"1"}
+Rendered chat/send_message.js.erb (0.2ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/chat" for 127.0.0.1 at Mon Dec 19 16:39:53 -0800 2011
+  Processing by ChatController#index as HTML
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  describe `users`
+  [1m[36mAREL (0.2ms)[0m  [1mINSERT INTO `users` (`created_at`, `updated_at`) VALUES ('2011-12-20 00:39:53', '2011-12-20 00:39:53')[0m
+  [1m[35mSQL (0.8ms)[0m  COMMIT
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT `users`.* FROM `users`[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  describe `user_records`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `user_records` (`ip`, `updated_at`, `user_id`, `created_at`) VALUES ('127.0.0.1', '2011-12-20 00:39:53', 4, '2011-12-20 00:39:53')[0m
+  [1m[35mSQL (0.6ms)[0m  COMMIT
+  [1m[36mFreeChannel Load (0.1ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels`[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `free_channels`.* FROM `free_channels`
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mFreeChannel Load (0.1ms)[0m  SELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 1) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles` WHERE (`roles`.`role1` = 'Obama') LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 1) LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 1) LIMIT 1
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  DELETE FROM `free_channels` WHERE (`free_channels`.`id` = 1)
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.2ms)[0m  describe `inuse_channels`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `inuse_channels` (`user1`, `created_at`, `user2`, `updated_at`, `name`) VALUES (3, '2011-12-20 00:39:53', 4, '2011-12-20 00:39:53', 1)[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `records`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `records` (`user2`, `created_at`, `channel`, `role2`, `updated_at`, `role1`, `user1`) VALUES (4, '2011-12-20 00:39:53', 1, 'Obama', '2011-12-20 00:39:53', 'Batman', 3)
+  [1m[36mSQL (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mUserRecord Load (0.1ms)[0m  SELECT `user_records`.* FROM `user_records` WHERE (`user_records`.`user_id` = 3) LIMIT 1
+  [1m[36mUserRecord Load (0.6ms)[0m  [1mSELECT `user_records`.* FROM `user_records` WHERE (`user_records`.`user_id` = 4) LIMIT 1[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_chat_index_html_erb___1693078433_69945301359800_0 at /home/hj/Dropbox/ingidio/American-Lit-302/allison/app/views/chat/index.html.erb:96)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_chat_index_html_erb___1693078433_69945301359800_0 at /home/hj/Dropbox/ingidio/American-Lit-302/allison/app/views/chat/index.html.erb:104)
+Rendered chat/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 886ms (Views: 7.4ms | ActiveRecord: 7.0ms)
+  [1m[35mInuseChannel Load (0.2ms)[0m  SELECT `inuse_channels`.* FROM `inuse_channels` WHERE (`inuse_channels`.`name` = 1) LIMIT 1
+  [1m[36mFreeChannel Load (0.1ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 1) LIMIT 1[0m
+
+
+Started POST "/chat/send" for 127.0.0.1 at Mon Dec 19 16:40:02 -0800 2011
+  Processing by ChatController#send_message as JS
+  Parameters: {"sender"=>"3", "msg_body"=>"sdf", "authenticity_token"=>"CSIQXDuXkGYxYwPdrPOjHII2fAUJ8adnEOrrCxZvtDk=", "utf8"=>"✓", "channel"=>"1"}
+Rendered chat/send_message.js.erb (0.2ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/chat/send" for 127.0.0.1 at Mon Dec 19 16:40:05 -0800 2011
+  Processing by ChatController#send_message as JS
+  Parameters: {"sender"=>"4", "msg_body"=>"dsfsfd", "authenticity_token"=>"CSIQXDuXkGYxYwPdrPOjHII2fAUJ8adnEOrrCxZvtDk=", "utf8"=>"✓", "channel"=>"1"}
+Rendered chat/send_message.js.erb (0.3ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/chat/send" for 127.0.0.1 at Mon Dec 19 16:40:35 -0800 2011
+  Processing by ChatController#send_message as JS
+  Parameters: {"sender"=>"3", "msg_body"=>"hi", "authenticity_token"=>"CSIQXDuXkGYxYwPdrPOjHII2fAUJ8adnEOrrCxZvtDk=", "utf8"=>"✓", "channel"=>"1"}
+Rendered chat/send_message.js.erb (0.2ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+  [1m[35mInuseChannel Load (0.3ms)[0m  SELECT `inuse_channels`.* FROM `inuse_channels` WHERE (`inuse_channels`.`name` = 1) LIMIT 1
+  [1m[36mFreeChannel Load (0.2ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 1) LIMIT 1[0m
+
+
+Started GET "/chat/" for 127.0.0.1 at Mon Dec 19 16:40:44 -0800 2011
+  [1m[35mUser Load (1.7ms)[0m  SELECT `users`.* FROM `users` WHERE (`users`.`id` = 3) LIMIT 1
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT `users`.* FROM `users` WHERE (`users`.`id` = 4) LIMIT 1[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT `users`.* FROM `users` WHERE (`users`.`id` = 3) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.4ms)[0m  DELETE FROM `users` WHERE (`users`.`id` = 3)
+  [1m[36mSQL (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT `users`.* FROM `users` WHERE (`users`.`id` = 4) LIMIT 1
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mAREL (0.1ms)[0m  DELETE FROM `users` WHERE (`users`.`id` = 4)
+  [1m[36mSQL (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mAREL (0.1ms)[0m  [1mDELETE FROM `inuse_channels` WHERE (`inuse_channels`.`id` = 1)[0m
+  [1m[35mSQL (0.1ms)[0m  COMMIT
+  Processing by ChatController#index as HTML
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `users`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `users` (`updated_at`, `created_at`) VALUES ('2011-12-20 00:40:44', '2011-12-20 00:40:44')
+  [1m[36mSQL (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `user_records`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `user_records` (`user_id`, `ip`, `updated_at`, `created_at`) VALUES (5, '127.0.0.1', '2011-12-20 00:40:44', '2011-12-20 00:40:44')
+  [1m[36mSQL (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mFreeChannel Load (0.1ms)[0m  SELECT `free_channels`.* FROM `free_channels`
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT `roles`.* FROM `roles`[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.5ms)[0m  describe `free_channels`
+  [1m[36mAREL (0.3ms)[0m  [1mINSERT INTO `free_channels` (`updated_at`, `created_at`, `user1`, `role1`) VALUES ('2011-12-20 00:40:44', '2011-12-20 00:40:44', 5, 'Superman')[0m
+  [1m[35mSQL (1.4ms)[0m  COMMIT
+  [1m[36mSQL (0.5ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mRole Load (0.1ms)[0m  SELECT `roles`.* FROM `roles` WHERE (`roles`.`role1` = 'Superman') LIMIT 1
+  [1m[36mUserRecord Load (0.1ms)[0m  [1mSELECT `user_records`.* FROM `user_records` WHERE (`user_records`.`user_id` = 5) LIMIT 1[0m
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_chat_index_html_erb___1693078433_69945300094360_0 at /home/hj/Dropbox/ingidio/American-Lit-302/allison/app/views/chat/index.html.erb:96)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_chat_index_html_erb___1693078433_69945300094360_0 at /home/hj/Dropbox/ingidio/American-Lit-302/allison/app/views/chat/index.html.erb:104)
+Rendered chat/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 431ms (Views: 6.9ms | ActiveRecord: 5.9ms)
+  [1m[36mInuseChannel Load (0.2ms)[0m  [1mSELECT `inuse_channels`.* FROM `inuse_channels` WHERE (`inuse_channels`.`name` = 2) LIMIT 1[0m
+  [1m[35mFreeChannel Load (0.1ms)[0m  SELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 2) LIMIT 1
+  [1m[36mInuseChannel Load (0.5ms)[0m  [1mSELECT `inuse_channels`.* FROM `inuse_channels` WHERE (`inuse_channels`.`name` = 1) LIMIT 1[0m
+  [1m[35mFreeChannel Load (0.5ms)[0m  SELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 1) LIMIT 1
+
+
+Started GET "/chat/" for 127.0.0.1 at Mon Dec 19 16:40:48 -0800 2011
+  Processing by ChatController#index as HTML
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mdescribe `users`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `users` (`created_at`, `updated_at`) VALUES ('2011-12-20 00:40:48', '2011-12-20 00:40:48')
+  [1m[36mSQL (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.1ms)[0m  SELECT `users`.* FROM `users`
+  [1m[36mSQL (0.0ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `user_records`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `user_records` (`ip`, `created_at`, `updated_at`, `user_id`) VALUES ('127.0.0.1', '2011-12-20 00:40:48', '2011-12-20 00:40:48', 6)
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mFreeChannel Load (0.2ms)[0m  SELECT `free_channels`.* FROM `free_channels`
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels`[0m
+  [1m[35mSQL (0.3ms)[0m  SHOW TABLES
+  [1m[36mFreeChannel Load (0.1ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 2) LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mRole Load (0.1ms)[0m  [1mSELECT `roles`.* FROM `roles` WHERE (`roles`.`role1` = 'Superman') LIMIT 1[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 2) LIMIT 1
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 2) LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  BEGIN
+  [1m[36mAREL (0.2ms)[0m  [1mDELETE FROM `free_channels` WHERE (`free_channels`.`id` = 2)[0m
+  [1m[35mSQL (0.8ms)[0m  COMMIT
+  [1m[36mSQL (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  SHOW TABLES
+  [1m[36mSQL (0.3ms)[0m  [1mdescribe `inuse_channels`[0m
+  [1m[35mAREL (0.1ms)[0m  INSERT INTO `inuse_channels` (`name`, `user2`, `created_at`, `user1`, `updated_at`) VALUES (2, 6, '2011-12-20 00:40:48', 5, '2011-12-20 00:40:48')
+  [1m[36mSQL (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mSQL (0.0ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mSHOW TABLES[0m
+  [1m[35mSQL (0.3ms)[0m  describe `records`
+  [1m[36mAREL (0.1ms)[0m  [1mINSERT INTO `records` (`role2`, `channel`, `created_at`, `user1`, `user2`, `role1`, `updated_at`) VALUES ('Superman', 2, '2011-12-20 00:40:48', 5, 6, 'Jesus', '2011-12-20 00:40:48')[0m
+  [1m[35mSQL (0.5ms)[0m  COMMIT
+  [1m[36mUserRecord Load (0.1ms)[0m  [1mSELECT `user_records`.* FROM `user_records` WHERE (`user_records`.`user_id` = 5) LIMIT 1[0m
+  [1m[35mUserRecord Load (0.6ms)[0m  SELECT `user_records`.* FROM `user_records` WHERE (`user_records`.`user_id` = 6) LIMIT 1
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_chat_index_html_erb___1693078433_69945299793740_0 at /home/hj/Dropbox/ingidio/American-Lit-302/allison/app/views/chat/index.html.erb:96)
+DEPRECATION WARNING: <% %> style block helpers are deprecated. Please use <%= %>. (called from _app_views_chat_index_html_erb___1693078433_69945299793740_0 at /home/hj/Dropbox/ingidio/American-Lit-302/allison/app/views/chat/index.html.erb:104)
+Rendered chat/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 978ms (Views: 7.0ms | ActiveRecord: 7.3ms)
+  [1m[36mInuseChannel Load (0.5ms)[0m  [1mSELECT `inuse_channels`.* FROM `inuse_channels` WHERE (`inuse_channels`.`name` = 2) LIMIT 1[0m
+  [1m[35mFreeChannel Load (0.1ms)[0m  SELECT `free_channels`.* FROM `free_channels` WHERE (`free_channels`.`id` = 2) LIMIT 1
+
+
+Started POST "/chat/send" for 127.0.0.1 at Mon Dec 19 16:40:52 -0800 2011
+  Processing by ChatController#send_message as JS
+  Parameters: {"sender"=>"6", "msg_body"=>"a", "authenticity_token"=>"CSIQXDuXkGYxYwPdrPOjHII2fAUJ8adnEOrrCxZvtDk=", "utf8"=>"✓", "channel"=>"2"}
+Rendered chat/send_message.js.erb (0.3ms)
+Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms)

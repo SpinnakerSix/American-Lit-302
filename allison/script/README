@@ -1,0 +1,10 @@
+for Role Generators
+
+Put the roles in the roles.txt file in the following format:
+Jesus, Devil
+Food, Chicken
+something1, something2
+...
+
+
+then run ./generate_roles to populate the roles database
