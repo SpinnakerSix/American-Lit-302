@@ -39,23 +39,25 @@ class ChatController < ApplicationController
         def download
           @user = params[:sender]
           @channel = params[:channel]
-	  f = File.open("app/views/logs/#{@channel}.txt")
+	  f = File.open("allison_logs/#{@channel}.txt")
 	  
           #send_file "app/views/logs/#{@channel}.txt", :type=>"application/text" 
 	  parse_download_log(f)
-          send_file "app/views/logs/tmp/allison_#{@user}.txt", :type=>"application/text" 
+          send_file "allison_logs/tmp/allison_#{@user}.txt", :type=>"application/text" 
         end
+
  	def parse_download_log(file)
 	  str = file.read
 	  pattern = "<#{@user}>"
           str = str.gsub(pattern, "You")
 	  str = str.gsub(/<\w+>/, "Friend")
 	  
-          f = File.new("app/views/logs/tmp/allison_#{@user}.txt", "w")
+          f = File.new("allison_logs/tmp/allison_#{@user}.txt", "w")
 	  f.write("Welcome to Allison! Happy Chatting!\n");
 	  f.write(str)
 	  f.close
 	end
+
 	def send_message
 	  @messg = params[:msg_body]
   	  @sender = params[:sender]
@@ -66,7 +68,7 @@ class ChatController < ApplicationController
 	  puts "channel: #{@channel}"
  	  Juggernaut.publish(select_channel(@channel), parse_chat_message(params[:msg_body], params[:sender]))	
 	  if (@messg != '') 
-            f = File.open("app/views/logs/#{@channel}.txt",'a')
+            f = File.open("allison_logs/#{@channel}.txt",'a')
             f.write("<#{@sender}>: #{@messg} \n")
             f.close
 	  end
