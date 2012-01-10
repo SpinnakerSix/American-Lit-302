@@ -18,6 +18,8 @@ run sudo node server.js in your juggernaut folder
 run rails s
 run ./juggernaut_listener in rails's script folder
 
+
+* make sure node is at v0.4.1 (use nvm to manage node versions). Otherwise you mgiht run into throw e nexttick exceptions
 make sure you have a mysql database then you are good to go
 
 Steps::

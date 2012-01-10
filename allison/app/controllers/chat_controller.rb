@@ -151,7 +151,8 @@ class ChatController < ApplicationController
 
             # record's file name is going to be the channel's name
             Record.create(:channel=>@channel_id, :user1=>@user1, :user2=>@user2, :role1=>@role1, :role2=>@role2)
-            File.new("app/views/logs/#{@channel_id}.txt", "w")
+	    # this  path starts at root (ie. "allison_logs/*.txt" starts at /allison_logs/*.txt)
+            File.new("allison_logs/#{@channel_id}.txt", "w")
 
 	    @loc1 = find_location_by_user_id(@user1)
 	    @loc2 = find_location_by_user_id(@user2)

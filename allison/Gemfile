@@ -7,7 +7,7 @@ gem 'rails', '3.0.3'
 gem 'json'
 gem 'mysql2', '< 0.3'
 gem 'juggernaut', :git => 'git://github.com/maccman/juggernaut.git'
-gem 'SystemTimer'
+#gem 'SystemTimer'
 gem 'rake', '0.8.7'
 gem 'geokit'
 
